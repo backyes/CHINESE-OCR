@@ -6,10 +6,7 @@ import numpy as np
 from .cfg import Config as cfg
 from .other import normalize
 
-sys.path.append('..')
 from ..lib.fast_rcnn.nms_wrapper import nms
-# from lib.fast_rcnn.test import  test_ctpn
-
 from .text_proposal_connector import TextProposalConnector
 
 

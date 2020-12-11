@@ -1,9 +1,8 @@
+
 import numpy as np
 import os, sys
-parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(parentdir)
 
-from .text_proposal_graph_builder import TextProposalGraphBuilder
+from ctpn.ctpn.text_proposal_graph_builder import TextProposalGraphBuilder
 
 
 class TextProposalConnector:

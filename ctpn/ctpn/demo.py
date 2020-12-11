@@ -7,15 +7,13 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(parentdir)
 
-from lib.networks.factory import get_network
-from lib.fast_rcnn.config import cfg
-from lib.fast_rcnn.test import test_ctpn
-from lib.fast_rcnn.nms_wrapper import nms
-from lib.utils.timer import Timer
-from text_proposal_connector import TextProposalConnector
+from ctpn.lib.networks.factory import get_network
+from ctpn.lib.fast_rcnn.config import cfg
+from ctpn.lib.fast_rcnn.test import test_ctpn
+from ctpn.lib.fast_rcnn.nms_wrapper import nms
+from ctpn.lib.utils.timer import Timer
+from ctpn.ctpn.text_proposal_connector import TextProposalConnector
 
 CLASSES = ('__background__', 'text')
 
@@ -93,11 +91,9 @@ if __name__ == '__main__':
     # load model
     print('Loading network {:s}... '.format("VGGnet_test")),
     saver = tf.train.Saver()
-    # saver.restore(sess,
-    #               os.path.join(os.getcwd(), "checkpoints/model_final.ckpt"))
     saver.restore(sess,
                   os.path.join(os.getcwd(),
-                               "/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/checkpoints/VGGnet_fast_rcnn_iter_50000.ckpt"))
+                               "/root/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/VGGnet_fast_rcnn_iter_180000.ckpt"))
     print(' done.')
 
     # Warmup on a dummy image

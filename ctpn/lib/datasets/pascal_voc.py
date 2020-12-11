@@ -24,6 +24,8 @@ from .imdb import imdb
 from .ds_utils import *
 from ..fast_rcnn.config import cfg
 
+import conf
+
 
 class pascal_voc(imdb):
     def __init__(self, image_set, year, devkit_path=None):
@@ -34,8 +36,7 @@ class pascal_voc(imdb):
         self._devkit_path = self._get_default_path() if devkit_path is None \
             else devkit_path
         # 将数据文件保存在仓库之外的位置
-        # self._devkit_path = '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/VOCdevkit2007'
-        self._devkit_path = '/home/xiaofeng/data/ctpn/VOCdevkit2007'
+        self._devkit_path = conf.devkit_path
         # 得到数据集的目录
         self._data_path = os.path.join(self._devkit_path, 'VOC' + self._year)
 

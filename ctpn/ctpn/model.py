@@ -5,25 +5,19 @@ import tensorflow as tf
 
 from .cfg import Config
 from .other import resize_im
-base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
+from ..lib.fast_rcnn.config import cfg
+from ..lib.networks.factory import get_network
+from ..lib.fast_rcnn.test import test_ctpn
 
-sys.path.append(os.getcwd())
-from lib.fast_rcnn.config import cfg
-from lib.networks.factory import get_network
-from lib.fast_rcnn.test import test_ctpn
+import conf
 
-# from ..lib.networks.factory import get_network
-# from ..lib.fast_rcnn.config import cfg
-# from..lib.fast_rcnn.test import test_ctpn
 '''
 load network
 输入的名称为'Net_model'
 'VGGnet_test'--test
 'VGGnet_train'-train
 '''
-
-
 def load_tf_model():
     cfg.TEST.HAS_RPN = True  # Use RPN for proposals
     # init session
@@ -33,7 +27,7 @@ def load_tf_model():
     saver = tf.train.Saver()
     # sess = tf.Session(config=config)
     sess = tf.Session()
-    ckpt_path = '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/ctpn/ctpn/retrain/ckpt'
+    ckpt_path = conf.ctpn_ckpt_path
     ckpt = tf.train.get_checkpoint_state(ckpt_path)
     reader = tf.train.NewCheckpointReader(ckpt.model_checkpoint_path)
     var_to_shape_map = reader.get_variable_to_shape_map()
@@ -44,11 +38,8 @@ def load_tf_model():
     print("load vggnet done")
     return sess, saver, net
 
-
-
 # init model
 sess, saver, net = load_tf_model()
-
 
 # 进行文本识别
 def ctpn(img):
