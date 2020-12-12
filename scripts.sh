@@ -10,3 +10,4 @@ PYTHONPATH=./ python predict/demo.py
 
 #  train crnn
 PYTHONPATH=./ python train/keras_train/trainbatch.py
+PYTHONPATH=./ python train/pytorch_train/crnn_main.py

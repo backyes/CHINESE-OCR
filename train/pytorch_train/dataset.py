@@ -94,6 +94,7 @@ class randomSequentialSampler(sampler.Sampler):
             index[i * self.batch_size:(i + 1) * self.batch_size] = batch_index
         # deal with tail
         if tail:
+            print(self.batch_size, len(self))
             random_start = random.randint(0, len(self) - self.batch_size)
             tail_index = random_start + torch.range(0, tail - 1)
             index[(i + 1) * self.batch_size:] = tail_index

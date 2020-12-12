@@ -18,15 +18,17 @@ from keys import alphabet
 from torch.autograd import Variable
 from warpctc_pytorch import CTCLoss
 
+import conf
+
 # with open('../run/char.txt') as f:
 #    newChars = f.read().strip().decode('utf-8')
 # alphabet += u''.join(list(set(newChars) - set(alphabet)))
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    '--trainroot', help='path to dataset', default='../data/lmdb/train')
+    '--trainroot', help='path to dataset', default=os.path.dirname(__file__) + '/../data/lmdb/train')
 parser.add_argument(
-    '--valroot', help='path to dataset', default='../data/lmdb/val')
+    '--valroot', help='path to dataset', default=os.path.dirname(__file__) + '/../data/lmdb/val')
 parser.add_argument(
     '--workers', type=int, help='number of data loading workers', default=4)
 parser.add_argument(
@@ -58,8 +60,7 @@ parser.add_argument(
 parser.add_argument(
     '--crnn',
     help="path to crnn (to continue training)",
-    default=
-    '/Users/xiaofeng/Code/Github/dataset/CHINESE_OCR/save_model/netCRNN.pth'
+    default= conf.netCRNN_pytorch_pth
 )
 # parser.add_argument('--crnn', help="path to crnn (to continue training)",default='')
 parser.add_argument('--alphabet', default=alphabet)

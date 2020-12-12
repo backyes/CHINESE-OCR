@@ -5,3 +5,4 @@ ctpn_pretrained_model = '/root/CHINESE-OCR/datasets/VGG_imagenet.npy'
 ctpn_ckpt_path = '/root/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval'
 #crnn
 ocr_model = '/root/CHINESE-OCR/datasets/my_model_keras.h5'
+netCRNN_pytorch_pth = '/root/CHINESE-OCR/datasets/netCRNN_pytorch.pth'
