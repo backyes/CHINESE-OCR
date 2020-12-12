@@ -21,7 +21,7 @@ base_path = os.path.abspath(os.path.dirname(__file__))
 print("base_path", base_path)
 trainroot = base_path + '/../data/lmdb/train'
 valroot = base_path + '/../data/lmdb/val'
-modelPath = base_path + '/../../atasets/my_model_keras.h5'
+modelPath = base_path + '/../../datasets/my_model_keras.h5'
 
 
 characters = keys_keras.alphabet[:]
@@ -40,12 +40,12 @@ LEARNING_RATE = 0.01
 Learning_decay_step = 20000
 PERCEPTION = 0.3
 EPOCH_NUMS = 1000000
-MODEL_PATH =base_path + '/output/'
+output =base_path + '/output/'
 LOG_FILE = 'log.txt'
 SUMMARY_PATH = base_path + './log/'
-if not os.path.exists(MODEL_PATH):
+if not os.path.exists(output):
     print('Creating save model path!!')
-    os.makedirs(MODEL_PATH)
+    os.makedirs(output)
 if not os.path.exists(SUMMARY_PATH):
     os.makedirs(SUMMARY_PATH)
 
@@ -102,7 +102,7 @@ test_loader = torch.utils.data.DataLoader(
     test_dataset, batch_size=testSize, shuffle=True, num_workers=int(workers))
 
 j = 0
-print('Strat training!!')
+print('Start training!!')
 for i in range(EPOCH_NUMS):
     for X, Y in train_loader:
         start = time.time()
@@ -139,7 +139,7 @@ for i in range(EPOCH_NUMS):
             print('\tTraining Loss is: [{}]'.format(currentLoss_train))
             print('\tVal Loss is: [{}]'.format(crrentLoss))
             print('\tSpeed is: [{}] Samples/Secs'.format(interval / times))
-            path = MODEL_PATH + '/my_model_keras.h5'
+            path = output + '/my_model_keras.h5'
             with open(LOG_FILE, mode='a') as log_file:
                 log_str = now_time + '----global_step:' + str(
                     j) + '----loss:' + str(loss) + '\n'
