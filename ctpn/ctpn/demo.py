@@ -15,6 +15,8 @@ from ctpn.lib.fast_rcnn.nms_wrapper import nms
 from ctpn.lib.utils.timer import Timer
 from ctpn.ctpn.text_proposal_connector import TextProposalConnector
 
+import conf
+
 CLASSES = ('__background__', 'text')
 
 
@@ -92,8 +94,7 @@ if __name__ == '__main__':
     print('Loading network {:s}... '.format("VGGnet_test")),
     saver = tf.train.Saver()
     saver.restore(sess,
-                  os.path.join(os.getcwd(),
-                               "/root/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/VGGnet_fast_rcnn_iter_180000.ckpt"))
+                  os.path.join(os.getcwd(), conf.ctpn_ckpt_model))
     print(' done.')
 
     # Warmup on a dummy image
