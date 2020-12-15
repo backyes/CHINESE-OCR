@@ -39,7 +39,9 @@ def save_results(image_name, im, line, thresh):
             color=(0, 0, 255),
             thickness=1)
     image_name = image_name.split('/')[-1]
-    cv2.imwrite(os.path.join("../data/results", image_name), im)
+    path_name = os.path.abspath(os.path.dirname(__file__) + "/../data/results")
+    print("writing " + path_name, image_name)
+    cv2.imwrite(os.path.join(path_name, image_name), im)
 
 
 def check_img(im):

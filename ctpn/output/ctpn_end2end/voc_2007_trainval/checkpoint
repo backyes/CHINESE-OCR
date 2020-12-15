@@ -1,2 +1,2 @@
-model_checkpoint_path: "/root/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/VGGnet_fast_rcnn_iter_180000.ckpt"
-all_model_checkpoint_paths: "/root/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/VGGnet_fast_rcnn_iter_180000.ckpt"
+model_checkpoint_path: "/home/jovyan/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/VGGnet_fast_rcnn_iter_180000.ckpt"
+all_model_checkpoint_paths: "/home/jovyan/CHINESE-OCR/ctpn/output/ctpn_end2end/voc_2007_trainval/VGGnet_fast_rcnn_iter_180000.ckpt"
